@@ -1,0 +1,2 @@
+# YccospWebApp
+IndivProject
