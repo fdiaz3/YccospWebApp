@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using YccospWebApp.Models;
-
+//just adding a comment to see how git works in VS
 namespace YccospWebApp.Controllers
 {
     public class TimeStampController : Controller
