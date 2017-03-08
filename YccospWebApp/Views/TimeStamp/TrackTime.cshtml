@@ -1,23 +1,32 @@
 ﻿@model YccospWebApp.Models.TimeStampModel
 
 @{
-    ViewBag.Title = "TimeStamp";
-    
+    ViewBag.Title = "TrackTime";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>TimeStamp</h2>
+<h2>TrackTime</h2>
 
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
+    
     <div class="form-horizontal">
         <h4>TimeStampModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
+            @Html.LabelFor(model => model.totalTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.totalTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.totalTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Clock In" class="btn btn-default" />
+                <input type="submit" value="Clock Out" class="btn btn-default" />
             </div>
         </div>
     </div>

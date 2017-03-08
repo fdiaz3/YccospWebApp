@@ -12,18 +12,47 @@ namespace YccospWebApp.Controllers
         // GET: TimeStamp
         public ActionResult TimeStampView()
         {
-            
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult TimeStampView(TimeStampModel model)
-        {
-
-            return View();
-            
+            TimeStampModel clock = new TimeStampModel(); 
+            return View(clock);
         }
 
         
+        public ActionResult TrackTime(TimeStampModel model)
+        {
+            
+            if (model.timer.IsRunning)
+            {
+                throw new InvalidOperationException("Time is already being tracking.");
+            }
+            model.timer.Restart();
+            return View(model);
+            
+        }
+
+        [HttpGet]
+        public ActionResult RecordTime(TimeStampModel model)
+        {
+            
+            if (model.timer.IsRunning)
+            {
+                model.timer.Stop();
+                model.totalTime = model.totalTime.Add(model.timer.Elapsed);
+            }
+            else
+            {
+                throw new InvalidOperationException("Time tracking is currently stopped.");
+            }
+            return View(model);
+
+        }
+
+        
+
+        /*public void ResetTotalTime()
+        {
+            totalTime = totalTime.Subtract(totalTime);
+        }*/
     }
+
+
 }

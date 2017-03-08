@@ -1,0 +1,12 @@
+﻿@model YccospWebApp.Models.TimeStampModel
+
+@{
+    ViewBag.Title = "RecordTime";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.totalTime.Seconds</h2>
+
+<div>
+    @Html.ActionLink("Back to List", "TimeStampView")
+</div>
